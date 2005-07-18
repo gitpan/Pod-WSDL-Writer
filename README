@@ -1,0 +1,80 @@
+NAME
+    Pod::WSDL::Writer - Writes XML output for Pod::WSDL
+
+INSTALLATION
+
+To install this module type the following:
+
+   perl Makefile.PL
+   make
+   make test
+   make install
+
+SYNOPSIS
+      use Pod::WSDL::Writer;
+      my $wr = new Pod::WSDL::Writer(pretty => 1, withDocumentation => 1);
+
+DESCRIPTION
+    This module is used internally by Pod::WSDL. By using AUTOLOADing it
+    delegates all unknown methods to XML::Writer. It is unlikely that you
+    have to interact directly with it. If that is the case, take a look at
+    the code, it is rather simple.
+
+METHODS
+  new
+    Instantiates a new Pod::WSDL::Writer. The method can take two parameters
+    "pretty" with a true value triggers pretty printing of the WSDL output.
+    "withDocumentation" with a true value produces a WSDL docuemnt
+    containing documentation for types and methods.
+
+  wrNewLine
+    Has XML::Writer write a newline
+
+  wrElem
+    Has XML::Writer write an Element. The first argument is one of
+    (empty|start|end), to write an empty element, a start or an end tag. The
+    second argument signifies the name of the tag. All further arguments are
+    attributes of the tag (does not work, when first argument is 'end')
+
+  wrDoc
+    Writes the string passed to the method as a <wsdl:documentation> Element
+
+  registerWrittenFaultMessage
+    There needs to be only one fault message per fault type. Here the client
+    class can register fault types already written. The fault name is passed
+    as the single argument to this method.
+
+  faultMessageWritten
+    Counterpart to registerWrittenFaultMessage. The client can ask if a
+    fault message has already written. The fault name is passed as the
+    single argument to this method.
+
+  output
+    Returns XML output.
+
+EXTERNAL DEPENDENCIES
+      XML::Writer
+
+EXAMPLES
+    see Pod::WSDL
+
+BUGS
+    see Pod::WSDL
+
+TODO
+    see Pod::WSDL
+
+SEE ALSO
+      Pod::WSDL
+ 
+AUTHOR
+    Tarek Ahmed, <luke.lubbock -the character every email address contains-
+    gmx.net>
+
+COPYRIGHT AND LICENSE
+    Copyright (C) 2005 by Tarek Ahmed
+
+    This library is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself, either Perl version 5.8.5 or, at
+    your option, any later version of Perl 5 you may have available.
+

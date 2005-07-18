@@ -1,0 +1,6 @@
+Revision history for Perl extension Pod::WSDL::Writer.
+
+0.01  Tue Jun 21 20:48:36 2005
+	- original version; created by h2xs 1.23 with options
+		-A -X Pod::WSDL::Writer
+
